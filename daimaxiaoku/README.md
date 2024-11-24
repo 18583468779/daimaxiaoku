@@ -53,3 +53,7 @@ server,
 ## 动态管理图片
 
 ![alt text](image-1.png)
+
+## eslint 配置
+
+yarn add eslint eslint-plugin-vue vue-eslint-parser @typescript-eslint/parser @typescript-eslint/eslint-plugin -D
