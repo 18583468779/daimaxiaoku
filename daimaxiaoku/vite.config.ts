@@ -1,19 +1,22 @@
 import { defineConfig, CommonServerOptions } from "vite";
 import vue from "@vitejs/plugin-vue";
-
+import fs from "fs";
+import dotenv, { DotenvParseOutput } from "dotenv";
 export default defineConfig((mode) => {
   const envFileName: string = ".env";
   const curEnvFileName = `${envFileName}.${mode.mode}`; // 配置环境变量的文件
-  console.log("curEnvFileName", curEnvFileName);
+  // 1.读取文件,获取不同环境下的配置文件
+  const envData = fs.readFileSync(curEnvFileName, "utf-8"); // 同步读取文件，获取的是buffer数据
+  const envMap: DotenvParseOutput = dotenv.parse(envData); // buffer转换为对象形式
   let server: CommonServerOptions = {}; // 配置服务开发
   if (mode.mode === "development") {
     server = {
-      host: "192.168.153.1",
-      port: 5005,
+      host: envMap.VITE_HOST,
+      port: envMap.VITE_PORT,
       proxy: {
-        // 代理
-        "/dmxk": {
-          target: "http://192.168.153.1:5003",
+        // 代理可以解决跨域的问题
+        [envMap.VITE_BASE_URL]: {
+          target: envMap.VITE_PROXY_DOMAIN,
         },
       },
     };

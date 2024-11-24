@@ -1,0 +1,3 @@
+type XIEWEN = {
+  xx: string;
+};
