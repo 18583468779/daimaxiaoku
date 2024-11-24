@@ -23,6 +23,10 @@ export default defineConfig((mode) => {
     console.log("开发者模式环境");
   } else if (mode.mode === "production") {
     console.log("生产者模式环境");
+    server = {
+      host: envMap.VITE_HOST,
+      port: envMap.VITE_PORT,
+    };
   }
   return {
     // base: "dxmk", // 项目基础根路径
