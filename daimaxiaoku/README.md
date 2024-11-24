@@ -1,5 +1,10 @@
 # Vue 3 + TypeScript + Vite
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+## ![alt text](image.png)
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+## 自定义变量环境
+
+1. .env.production 表示生产环境下的文件
+2. .env.development 表示开发环境下的文件
+3. .env 表示备选环境文件
+   注意：vite 只处理以 VITE 开头的环境变量
