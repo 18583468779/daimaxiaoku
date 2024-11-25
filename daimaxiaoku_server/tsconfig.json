@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "es6" /* 指定ECMAScript目标版本 */,
+    "module": "commonjs" /* 指定使用commonjs模块系统 */,
+    "lib": ["es6", "dom"] /* 指定编译时包含的库 */,
+    "outDir": "./dist" /* 指定输出目录 */,
+    "rootDir": "./src" /* 指定源文件目录 */,
+    "strict": true /* 启用所有严格类型检查选项 */,
+    "esModuleInterop": true /* 启用esModuleInterop */,
+    "skipLibCheck": true /* 跳过库文件的类型检查 */,
+    "forceConsistentCasingInFileNames": true /* 强制文件名大小写一致 */
+  },
+  "include": ["src/**/*"] /* 指定要编译的文件 */,
+  "exclude": ["node_modules"] /* 排除node_modules目录 */,
+  "compileOnSave": false /* 禁用自动编译 */,
+  "typeRoots": ["./node_modules/@types"] /* 指定@types类型文件的位置 */,
+  "types": ["node"] /* 需要包含的类型定义文件 */
+}
