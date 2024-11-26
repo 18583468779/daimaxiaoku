@@ -15,7 +15,8 @@ class AllRouterLoader {
   // 初始化方法
   init(app: Koa) {
     this.app = app;
-    this.loadAllRouterWrapper();
+    const rootRouter = this.loadAllRouterWrapper();
+    app.use(rootRouter.routes()); // 挂载路由
     // 4.监听方法
     this.listen();
   }
@@ -42,6 +43,7 @@ class AllRouterLoader {
     const allFullFilePaths = this.getAbsoluteFilePaths();
     // 3.2调用加载所有一级路由到二级路由方法
     this.loadAllRouter(allFullFilePaths, rootRouter);
+    return rootRouter;
   }
   // 获取一级路由
   getRootRouter() {
