@@ -4,6 +4,7 @@ import fs from "fs";
 import Router from "koa-router";
 import path from "path";
 import json from "koa-json";
+import globalException from "./GlobalExce";
 // 自动路由加载
 
 // process.cwd(); // 执行环境路径
@@ -16,7 +17,8 @@ class AllRouterLoader {
   init(app: Koa) {
     this.app = app;
     const rootRouter = this.loadAllRouterWrapper();
-    app.use(rootRouter.routes()); // 挂载路由
+    this.app.use(globalException); // 统一错误处理
+    this.app.use(rootRouter.routes()); // 挂载路由
     // 4.监听方法
     this.listen();
   }
