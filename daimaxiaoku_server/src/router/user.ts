@@ -15,7 +15,7 @@ router.get("/findUserInfo/:username", async (ctx: Context) => {
 
 router.post("/addUser", async (ctx: Context) => {
   const user = ctx.request.body;
-  const data = addUser(user);
+  const data = await addUser(user);
   ctx.body = success(data);
 });
 
