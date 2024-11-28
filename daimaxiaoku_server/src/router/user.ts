@@ -2,6 +2,8 @@
 
 import { Context } from "koa";
 import Router from "koa-router";
+import { addUser } from "../dao/UserDaoDefine";
+import { success } from "../common/ResResult";
 
 const router = new Router();
 router.prefix("/user");
@@ -13,7 +15,8 @@ router.get("/findUserInfo/:username", async (ctx: Context) => {
 
 router.post("/addUser", async (ctx: Context) => {
   const user = ctx.request.body;
-  ctx.body = `欢迎${user.username}`;
+  const data = addUser(user);
+  ctx.body = success(data);
 });
 
 module.exports = router;
