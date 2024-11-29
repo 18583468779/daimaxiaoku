@@ -23,3 +23,11 @@
 ## fs
 
 1. fs.readdirSync()方法用于同步读取给定目录的内容。该方法返回一个数组，其中包含目录中的所有文件名或对象。 options 参数可用于更改从方法返回文件的格式。
+
+## 数据库聚合查询
+
+1. 查询数量 => select count(\*) as 总用户数 from user;
+2. 查询最小值 => select min(id) from user;
+3. 查询最大值 => select max(id) from user;
+4. 分组查询 => select address,count(valid) as 总人数 from user where valid=1 group by address;
+5. 分页查询 => select \* from user limit 5,3
