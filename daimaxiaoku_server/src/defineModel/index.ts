@@ -1,6 +1,10 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../dao/BaseDaoDefine";
-
+/**
+ *  适合单表添加，更新
+ *  适合多表级联添加更新
+ * 不适合多表级联查询，和前端取出的数据相差甚远
+ */
 class UserModel {
   static createModel() {
     const model = sequelize.define(

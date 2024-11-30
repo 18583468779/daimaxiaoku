@@ -8,7 +8,9 @@
     "strict": true /* 启用所有严格类型检查选项 */,
     "esModuleInterop": true /* 启用esModuleInterop */,
     "skipLibCheck": true /* 跳过库文件的类型检查 */,
-    "forceConsistentCasingInFileNames": true /* 强制文件名大小写一致 */
+    "forceConsistentCasingInFileNames": true /* 强制文件名大小写一致 */,
+    "experimentalDecorators": true, // 启用装饰器
+    "emitDecoratorMetadata": true // 如果你还需要装饰器的元数据，也启用这个选项
   },
   "include": ["src/**/*"] /* 指定要编译的文件 */,
   "exclude": ["node_modules"] /* 排除node_modules目录 */,

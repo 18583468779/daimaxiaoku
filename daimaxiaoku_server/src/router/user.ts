@@ -10,6 +10,7 @@ import {
   findByUserLimit,
 } from "../dao/UserDaoDefine";
 import { success } from "../common/ResResult";
+import UserDaoOrm from "../dao/UserDaoOrm";
 
 const router = new Router();
 router.prefix("/user");
@@ -20,7 +21,8 @@ router.get("/findUserInfo/:username", async (ctx: Context) => {
 });
 router.get("/findAllUser", async (ctx: Context) => {
   // 获取用户列表
-  ctx.body = await findAllUser();
+  // ctx.body = await findAllUser();
+  ctx.body = await UserDaoOrm.findAllUser();
 });
 router.get("/findUser", async (ctx: Context) => {
   ctx.body = await findByLike();
