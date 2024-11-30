@@ -2,15 +2,9 @@
 
 import { Context } from "koa";
 import Router from "koa-router";
-import {
-  addUser,
-  findAllUser,
-  findByLike,
-  findByUserAndAddr,
-  findByUserLimit,
-} from "../dao/UserDaoDefine";
+
 import { success } from "../common/ResResult";
-import UserDaoOrm from "../dao/UserDaoOrm";
+import { userDao } from "../modules/user/dao/UserDao";
 
 const router = new Router();
 router.prefix("/user");
@@ -21,24 +15,23 @@ router.get("/findUserInfo/:username", async (ctx: Context) => {
 });
 router.get("/findAllUser", async (ctx: Context) => {
   // 获取用户列表
-  // ctx.body = await findAllUser();
-  ctx.body = await UserDaoOrm.findAllUser();
+  ctx.body = await userDao.findAllUser();
 });
 router.get("/findUser", async (ctx: Context) => {
-  ctx.body = await findByLike();
+  ctx.body = await userDao.findByLike();
 });
 
 router.get("/findAndUser", async (ctx: Context) => {
-  ctx.body = await findByUserAndAddr();
+  ctx.body = await userDao.findByUserAndAddr();
 });
 router.get("/findByUserLimit", async (ctx: Context) => {
-  ctx.body = await findByUserLimit();
+  ctx.body = await userDao.findByUserLimit();
 });
 
 router.post("/addUser", async (ctx: Context) => {
   //新增用户
   const user = ctx.request.body;
-  const data = await addUser(user);
+  const data = await userDao.addUser(user);
   ctx.body = success(data);
 });
 

@@ -1,23 +1,23 @@
 import { Op } from "sequelize";
 import { model } from "../model";
-
+// import model from '../../../modules/decorModel/user'
 class UserDao {
   static userDao: UserDao = new UserDao();
-  static addUser(user: any) {
+  addUser(user: any) {
     return model.create(user); // 创建用户
   }
-  static findAllUser() {
+  findAllUser() {
     return model.findAll({
       raw: true, // 只获取值
     }); // 查找所有的用户
   }
-  static findByProps() {
+  findByProps() {
     return model.findAll({
       raw: true,
       attributes: ["username"], // 投影查询 => 指定查询的数据
     });
   }
-  static findByLike() {
+  findByLike() {
     // 模糊查询
     return model.findAll({
       raw: true,
@@ -28,7 +28,7 @@ class UserDao {
       },
     });
   }
-  static findByUserAndAddr() {
+  findByUserAndAddr() {
     // and or 查询
     return model.findAll({
       raw: true,
@@ -46,7 +46,7 @@ class UserDao {
       },
     });
   }
-  static findByUserLimit() {
+  findByUserLimit() {
     // 分页查询
     return model.findAll({
       raw: true,
@@ -56,10 +56,4 @@ class UserDao {
   }
 }
 
-export const {
-  addUser,
-  findAllUser,
-  findByLike,
-  findByUserAndAddr,
-  findByUserLimit,
-} = UserDao;
+export const userDao = UserDao.userDao;
