@@ -1,5 +1,5 @@
 import { DataTypes } from "sequelize";
-import { sequelize } from "../dao/BaseDaoDefine";
+import { sequelize } from "../../BaseDaoOrm";
 /**
  *  适合单表添加，更新
  *  适合多表级联添加更新

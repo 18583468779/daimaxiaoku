@@ -1,7 +1,8 @@
 import { Op } from "sequelize";
-import { model } from "../defineModel";
+import { model } from "../model";
 
-class UserDaoDefine {
+class UserDao {
+  static userDao: UserDao = new UserDao();
   static addUser(user: any) {
     return model.create(user); // 创建用户
   }
@@ -61,4 +62,4 @@ export const {
   findByLike,
   findByUserAndAddr,
   findByUserLimit,
-} = UserDaoDefine;
+} = UserDao;

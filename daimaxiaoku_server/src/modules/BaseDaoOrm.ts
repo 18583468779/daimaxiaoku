@@ -3,8 +3,9 @@
 import { Dialect } from "sequelize";
 import { Sequelize } from "sequelize-typescript";
 import dbConConf from "../config/dbconfig";
-class BaseDaoDefine {
-  static baseDaoOem: BaseDaoDefine = new BaseDaoDefine();
+import path from "path";
+class BaseDao {
+  static baseDao: BaseDao = new BaseDao();
   sequelize!: Sequelize;
   constructor() {
     this.initSeqConf("mysql");
@@ -18,6 +19,12 @@ class BaseDaoDefine {
       define: { timestamps: false, freezeTableName: true },
     });
   }
-}
 
-export const { sequelize } = BaseDaoDefine.baseDaoOem;
+  addModels() {
+    const modelPath = path.join(process.cwd(), "/src/modules/decorModel");
+    this.sequelize.addModels([modelPath]); // 添加模型
+  }
+}
+const baseDao = BaseDao.baseDao;
+baseDao.addModels();
+export const { sequelize } = baseDao;
