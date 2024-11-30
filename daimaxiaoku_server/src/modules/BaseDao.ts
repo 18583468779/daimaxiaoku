@@ -17,6 +17,13 @@ class BaseDao {
       port,
       dialect, // 表示是何种数据库
       define: { timestamps: false, freezeTableName: true },
+      pool: {
+        // 数据库连接池
+        max: 10, // 最大链接对象的个数
+        min: 5, // 最小连接数
+        idle: 10000, // 空闲链接最长等待时间，单位毫秒
+        acquire: 1000, // 表示一条sql查询在获取链接资源之前的最长等待时间，单位秒
+      },
     });
   }
 

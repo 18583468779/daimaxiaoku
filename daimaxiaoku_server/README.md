@@ -31,3 +31,6 @@
 3. 查询最大值 => select max(id) from user;
 4. 分组查询 => select address,count(valid) as 总人数 from user where valid=1 group by address;
 5. 分页查询 => select \* from user limit 5,3
+
+![alt text](image.png)
+![alt text](image-1.png)
