@@ -34,3 +34,60 @@
 
 ![alt text](image.png)
 ![alt text](image-1.png)
+
+## 数据表--外键的作用
+
+```
+创建 一级分类表
+CREATE TABLE `dmxk`.`firstctgy` (
+  `firstCtgyId` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(20) NULL,
+  PRIMARY KEY (`firstCtgyId`)
+);
+
+// 插入数据
+insert into dmxk.firstctgy values(1,'童书'),(2,'电子书'),(3,'女装'),(4,'食品'),(5,'男装'),(6,'数码相机'),(7,'创意文具'),(8,'童装童鞋');
+```
+
+```
+创建二级分类关联一级分类表
+
+CREATE TABLE `dmxk`.`secondctgy` (
+  `secondctgyId` INT NOT NULL AUTO_INCREMENT,
+  `secctgyname` VARCHAR(20) NOT NULL,
+  `firstctgyId` INT NOT NULL,
+  PRIMARY KEY (`secondctgyId`),
+  CONSTRAINT `fk_ctgyid` FOREIGN KEY (`firstctgyId`) REFERENCES `dmxk`.`firstctgy` (`firstCtgyId`) ON UPDATE CASCADE
+);
+```
+
+```
+创建三级分类关联二级分类表
+
+create table `dmxk`.`thirdctgy` (
+    `thirdctgyId` int not null auto_increment,
+    `thirdname` varchar(20) not null,
+     `secctgyId` int null,
+     primary key (`thirdctgyId`),
+     constraint fk_secctgyId foreign key(secctgyId) references secondctgy(`secondctgyId`)
+);
+
+
+```
+
+## mysql 多表内连接查询
+
+```
+select * from secondctgy sc inner join thirdctgy tc on sc.secondctgyId=tc.secctgyId;
+
+```
+
+## mysql 多表左外连接查询
+
+```
+SELECT tc.thirdctgyId, tc.thirdname, tc.secctgyId, sc.secctgyname
+FROM thirdctgy tc
+LEFT JOIN secondctgy sc
+ON tc.secctgyId = sc.secondctgyId;
+
+```
