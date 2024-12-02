@@ -169,4 +169,14 @@ type Pkeys2 = AllKeys<keyof Product>;
 2. 接口可以继承一个或者多个接口，也可以继承 type,但是 type 没有
 3. 接口可以合并声明，type 不可以
 
+## const 关键字使用技巧
+
+```
+const arr = [10, 20, 30];
+arr[0] = 100;
+const arr1 = [10, 20, 30] as const;
+
+arr1[0] = 100; // 无法为“0”赋值，因为它是只读属性。
+```
+
 ## 元组
